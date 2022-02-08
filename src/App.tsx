@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import cameraImg from 'img/camera.png';
+import objectsImg from 'img/objects.png';
+import { Object } from '@model/Object';
+import { Config } from '@model/Config';
+import { Link } from 'react-router-dom';
 
 function App() {
+  const [objects, setObjects] = useState<Object[]>([]);
+  const [config, setConfig] = useState<Config>();
+
+  useEffect(() => {
+    async function getObjects() {
+      let response = await fetch("http://localhost:8080/objects");
+      let data: Object[] = await response.json() as [Object];
+      setObjects(data);
+    }
+
+    async function getCOnfig() {
+      let response = await fetch("http://localhost:8080/config");
+      let data = await response.json() as Config;
+      setConfig(data);
+    }
+    getObjects();
+    getCOnfig();
+  }, []);
+
+  const getImage = async () => {
+    let response = await fetch("http://localhost:8080/image");
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Welcome to the world of Ray Tracing</h1>
+      <p>Create your own scene</p>
+      <p>First thing to do: set up your configuration</p>
+      <h2>Config</h2>
+      <p>Image height: {config?.height}</p>
+      <p>Image width: {config?.width}</p>
+      <p>Anti aliasing: {config?.antiAliasing}</p>
+      <p>Max reflection: {config?.maxReflexion}</p>
+      <p>Final filter: {config?.finalFilter}</p>
+      <Link to="/config/edit" {...config}>Edit</Link>
+      <h2>Cameras</h2>
+      <Link to="/cameras"> <img src={cameraImg} alt="camera" height={100} width={100}/></Link>
+      <h2>Objects</h2>
+      <Link to="/cameras"> <img src={objectsImg} alt="camera" height={100} width={100}/></Link>
+      <Link to="/image">Run</Link>
     </div>
   );
 }

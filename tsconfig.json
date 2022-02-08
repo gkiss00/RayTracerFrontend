@@ -18,7 +18,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src", // This must be specified if "paths" is.
+    "paths": {
+        "@components/*": ["components/*"],
+        "@enums/*": ["enums/*"],
+        "@model/*": ["model/*"]
+    },
   },
   "include": [
     "src"

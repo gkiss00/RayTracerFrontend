@@ -3,11 +3,26 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import EditConfigForm from 'components/forms/EditConfigForm';
+import CameraList from 'components/lists/CameraList';
+import AddCameraForm from 'components/forms/AddCameraForm';
+import ImageView from 'components/ImageView';
+import EditCameraForm from 'components/forms/EditCameraForm';
+import CameraDetails from 'components/details/CameraDetails';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App />} />
+    <Route path="config/edit" element={<EditConfigForm />} />
+    <Route path="cameras" element={<CameraList />} />
+    <Route path="cameras/:id" element={<CameraDetails />} />
+    <Route path="cameras/:id/edit" element={<EditCameraForm />} />
+    <Route path="cameras/add" element={<AddCameraForm />} />
+    <Route path="image" element={<ImageView />} />
+  </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
