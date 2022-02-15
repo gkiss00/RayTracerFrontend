@@ -10,6 +10,9 @@ import AddCameraForm from 'components/forms/AddCameraForm';
 import ImageView from 'components/ImageView';
 import EditCameraForm from 'components/forms/EditCameraForm';
 import CameraDetails from 'components/details/CameraDetails';
+import ObjectList from 'components/lists/ObjectList';
+import ObjectTypeList from 'components/lists/ObjectTypeList';
+import AddObjectForm from 'components/forms/AddObjectForm';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +23,9 @@ ReactDOM.render(
     <Route path="cameras/:id" element={<CameraDetails />} />
     <Route path="cameras/:id/edit" element={<EditCameraForm />} />
     <Route path="cameras/add" element={<AddCameraForm />} />
+    <Route path="objects" element={<ObjectList />} />
+    <Route path="objects/types" element={<ObjectTypeList />} />
+    <Route path="objects/add" element={<AddObjectForm />} />
     <Route path="image" element={<ImageView />} />
   </Routes>
   </BrowserRouter>,

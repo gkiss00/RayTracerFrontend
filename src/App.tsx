@@ -45,7 +45,7 @@ function App() {
       <h2>Cameras</h2>
       <Link to="/cameras"> <img src={cameraImg} alt="camera" height={100} width={100}/></Link>
       <h2>Objects</h2>
-      <Link to="/cameras"> <img src={objectsImg} alt="camera" height={100} width={100}/></Link>
+      <Link to="/objects"> <img src={objectsImg} alt="camera" height={100} width={100}/></Link>
       <Link to="/image">Run</Link>
     </div>
   );

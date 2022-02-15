@@ -1,5 +1,6 @@
 export enum ObjectTypeEnum {
-    SPHERE,
-    PLANE,
-    CYLINDER
+    SPHERE = "SPHERE",
+    PLANE = "PLANE",
+    CYLINDER = "CYLINDER",
+    CUBE = "CUBE"
 }

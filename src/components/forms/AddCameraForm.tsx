@@ -5,7 +5,7 @@ import { useNavigate } from "react-router";
 
 function AddCameraForm() {
     const navigate = useNavigate();
-    const [coordinates, setCoordinates] = useState<Point3D>(new Point3D(0, 0, 0));
+    const [coordinates, setCoordinates] = useState<Point3D>(new Point3D(-100, 0, 0));
     const [direction, setDirection] = useState<Point3D>(new Point3D(1, 0, 0));
     const [up, setUp] = useState<Point3D>(new Point3D(0, 0, 1));
     const [angle, setAngle] = useState<number>(90);

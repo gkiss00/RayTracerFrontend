@@ -23,7 +23,8 @@
     "paths": {
         "@components/*": ["components/*"],
         "@enums/*": ["enums/*"],
-        "@model/*": ["model/*"]
+        "@model/*": ["model/*"],
+        "@utils/*": ["utils/*"]
     },
   },
   "include": [
