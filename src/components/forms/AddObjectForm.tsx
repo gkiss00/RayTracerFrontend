@@ -2,8 +2,10 @@ import { Point3D } from "./../../model/Point3D";
 import { Object } from "./../../model/Object";
 import { useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { ObjectTypeEnum } from "@enums/ObjectTypeEnum";
+import { ObjectTypeEnum } from "./../../enums/ObjectTypeEnum";
 import objectTypeValueNamesMap from "./../../utils/ObjectTypeValueNamesMap";
+import objectPatternMap from "./../../utils/ObjectPatternMap";
+import { PatternTypeEnum } from "./../../enums/PatternTypeEnum";
 
 function AddObjectForm () {
     //UTILS
@@ -17,6 +19,7 @@ function AddObjectForm () {
     const [coordinates, setCoordinates] = useState<Point3D>(new Point3D(0, 0, 0));
     const [scaling, setScaling] = useState<Point3D>(new Point3D(1, 1, 1));
     const [rotation, setRotation] = useState<Point3D>(new Point3D(0, 0, 0));
+    const [pattern, setPattern] = useState<PatternTypeEnum>(PatternTypeEnum.UNIFORM);
     const [colors, setColors] = useState<string[]>([]);
     
     //TMP VALUES
@@ -146,6 +149,18 @@ function AddObjectForm () {
                             }}/>
                         </label>
                     </div>
+                </div>
+                <div>
+                    <label>
+                        Pattern:
+                        <select value={pattern} onChange={e => {setPattern(e.target.value as PatternTypeEnum)}}>
+                            {
+                                objectPatternMap.get(type)?.map((pattern) => {
+                                    return <option value={pattern}>{pattern}</option>
+                                })
+                            }
+                        </select>
+                    </label>
                 </div>
                 <div>
                     <label>

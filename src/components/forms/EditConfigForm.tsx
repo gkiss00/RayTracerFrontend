@@ -41,7 +41,7 @@ function EditConfigForm() {
             <input type="number" value={width} name="width" onChange={e => {setWidth(Number(e.target.value))}}/>
             <input type="number" value={antiAliasing} name="antiAliasing" onChange={e => {setAntiAliasing(Number(e.target.value))}}/>
             <input type="number" value={maxReflection} name="maxReflection" onChange={e => {setMaxReflection(Number(e.target.value))}}/>
-            <select value={finalFilter} onChange={e => {const tmp: string = e.target.value;console.log(tmp)}}>
+            <select value={finalFilter} onChange={e => {setFinalFilter(e.target.value as FinalFilterEnum)}}>
                 {(Object.keys(FinalFilterEnum) as Array<keyof typeof FinalFilterEnum>).map((key: string) => {
                     return <option value={key}>{key}</option>
                 })}
