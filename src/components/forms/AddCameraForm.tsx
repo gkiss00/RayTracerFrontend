@@ -22,9 +22,8 @@ function AddCameraForm() {
             },
             body: JSON.stringify(cam)
         }).then((response) => {
-            navigate("/cameras");
+            navigate(-1);
         })
-        
     }
 
     return (

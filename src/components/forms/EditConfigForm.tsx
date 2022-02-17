@@ -1,8 +1,13 @@
 import { FinalFilterEnum } from "./../../enums/FinalFilterEnum";
 import { Config } from "./../../model/Config";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function EditConfigForm() {
+    //UTILS
+    const navigate = useNavigate();
+
+    //DATA SENT TO THE BACKEND
     const [height, setHeight] = useState<number>(0);
     const [width, setWidth] = useState<number>(0);
     const [antiAliasing, setAntiAliasing] = useState<number>(0);
@@ -33,7 +38,9 @@ function EditConfigForm() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(config)
-        });
+        }).then((response) => {
+            navigate(-1);
+        })
     }
     return (
         <form onSubmit={handleSubmit}>

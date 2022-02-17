@@ -21,6 +21,7 @@ function AddObjectForm () {
     const [rotation, setRotation] = useState<Point3D>(new Point3D(0, 0, 0));
     const [pattern, setPattern] = useState<PatternTypeEnum>(PatternTypeEnum.UNIFORM);
     const [colors, setColors] = useState<string[]>([]);
+    const [reflexion, setReflexion] = useState<number>(0);
     
     //TMP VALUES
     let i = -1;
@@ -33,7 +34,7 @@ function AddObjectForm () {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        const object: Object = new Object(type, values, coordinates, scaling, rotation, colors);
+        const object: Object = new Object(type, values, coordinates, scaling, rotation, pattern, colors, reflexion);
         console.log(JSON.stringify(object));
         fetch("http://localhost:8080/object/add", {
             method:"POST",
@@ -43,7 +44,7 @@ function AddObjectForm () {
             },
             body: JSON.stringify(object)
         }).then((response) => {
-            navigate("/objects");
+            navigate(-1);
         })
     }
     
@@ -174,6 +175,15 @@ function AddObjectForm () {
                         {colors.map(color => {
                             return <div style={{backgroundColor: color, width:20, height:20}}></div>
                         })}
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Reflexion:
+                        <input type="number" value={reflexion} min={0} max={100} onChange={e => {
+                            e.preventDefault();
+                            setReflexion(Number(e.target.value));
+                        }}/>
                     </label>
                 </div>
                 <div>
