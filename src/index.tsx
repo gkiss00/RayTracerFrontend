@@ -13,6 +13,8 @@ import CameraDetails from 'components/details/CameraDetails';
 import ObjectList from 'components/lists/ObjectList';
 import ObjectTypeList from 'components/lists/ObjectTypeList';
 import AddObjectForm from 'components/forms/AddObjectForm';
+import AddLightForm from 'components/forms/AddLightForm';
+import LightList from 'components/lists/LightList';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -26,6 +28,8 @@ ReactDOM.render(
     <Route path="objects" element={<ObjectList />} />
     <Route path="objects/types" element={<ObjectTypeList />} />
     <Route path="objects/add" element={<AddObjectForm />} />
+    <Route path="lights" element={<LightList />} />
+    <Route path="lights/add" element={<AddLightForm />} />
     <Route path="image" element={<ImageView />} />
   </Routes>
   </BrowserRouter>,

@@ -4,7 +4,10 @@ import { Camera } from "./../../model/Camera";
 import { useNavigate } from "react-router";
 
 function AddCameraForm() {
+    // UTILS
     const navigate = useNavigate();
+
+    //DATA
     const [coordinates, setCoordinates] = useState<Point3D>(new Point3D(-100, 0, 0));
     const [direction, setDirection] = useState<Point3D>(new Point3D(1, 0, 0));
     const [up, setUp] = useState<Point3D>(new Point3D(0, 0, 1));
@@ -23,7 +26,7 @@ function AddCameraForm() {
             body: JSON.stringify(cam)
         }).then((response) => {
             navigate(-1);
-        })
+        });
     }
 
     return (

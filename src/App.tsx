@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import cameraImg from 'img/camera.png';
 import objectsImg from 'img/objects.png';
+import lightImg from 'img/light.jpg';
 import { Object } from '@model/Object';
 import { Config } from '@model/Config';
 import { Link } from 'react-router-dom';
@@ -45,7 +46,9 @@ function App() {
       <h2>Cameras</h2>
       <Link to="/cameras"> <img src={cameraImg} alt="camera" height={100} width={100}/></Link>
       <h2>Objects</h2>
-      <Link to="/objects"> <img src={objectsImg} alt="camera" height={100} width={100}/></Link>
+      <Link to="/objects"> <img src={objectsImg} alt="object" height={100} width={100}/></Link>
+      <h2>Lights</h2>
+      <Link to="/lights"> <img src={lightImg} alt="light" height={100} width={100}/></Link>
       <Link to="/image">Run</Link>
     </div>
   );
